@@ -1,0 +1,32 @@
+import numpy as np
+
+x = np.array([0,1,2,3,3,5,5,6,7,7,10,5])
+y = np.array([96,85,82,74,95,68,76,58,65,75,50,84])
+
+
+s_x=0
+for val in x:
+    s_x+=val
+#print(s_x)
+
+s_y=0
+for val in y:
+    s_y+=val
+#print(s_y)
+
+nn=len(x)
+total_val_xy = 0
+total_val_xx = 0
+for i in range(nn):
+    total_val_xy += x[i] * y[i]
+    total_val_xx += x[i] ** 2
+    
+slope = ((nn * total_val_xy) - (s_x * s_y)) / ((nn * total_val_xx) - (s_x ** 2))
+intercept = (s_y - (slope * s_x)) / nn
+
+new_x = float(input("Enter a value of x: "))
+new_y = slope * new_x + intercept
+print(new_y)
+    
+
+
